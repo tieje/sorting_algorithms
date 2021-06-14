@@ -1,4 +1,5 @@
 #include "sort.h"
+
 /**
  * selection_sort - performs a selection sort on array
  * @array: array data
@@ -6,10 +7,7 @@
  */
 void selection_sort(int *array, size_t size)
 {
-	int smallest;
-	size_t index_switch = 0;
-	size_t i;
-	size_t j;
+	size_t smallest, i, j;
 	int tmp;
 
 	if (!array || size < 2)
@@ -17,20 +15,17 @@ void selection_sort(int *array, size_t size)
 
 	for (i = 0; i + 1 < size; i++)
 	{
-		smallest = array[i];
+		smallest = i;
 		for (j = i + 1; j < size; j++)
 		{
-			if (array[j] < smallest)
-			{
-				smallest = array[j];
-				index_switch = j;
-			}
+			if (array[j] < array[smallest])
+				smallest = j;
 		}
-		if (index_switch > i)
+		if (i != smallest)
 		{
 			tmp = array[i];
-			array[i] = smallest;
-			array[index_switch] = tmp;
+			array[i] = array[smallest];
+			array[smallest] = tmp;
 			print_array(array, size);
 		}
 	}
