@@ -12,6 +12,9 @@ void selection_sort(int *array, size_t size)
 	size_t j;
 	int tmp;
 
+	if (!array || size < 2)
+		return;
+
 	for (i = 0; i + 1 < size; i++)
 	{
 		smallest = array[i];
